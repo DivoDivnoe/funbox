@@ -4,6 +4,7 @@
   font-size: 20px;
   font-family: 'Exo 2.0', 'Arial', sans-serif;
   color: white;
+  text-align: center;
 }
 
 .catalog__list {
@@ -68,14 +69,12 @@
   .catalog__heading {
     padding-top: 45px;
     font-size: 36px;
-    text-align: center;
   }
 
   .catalog__list {
     flex-direction: row;
     flex-wrap: wrap;
     padding-top: 40px;
-    margin-bottom: 130px;
   }
 
   .catalog__item {
@@ -90,6 +89,9 @@
 }
 
 @media screen and (min-width: $desktop) {
+  .catalog__list {
+    margin-bottom: 130px;
+  }
   .catalog__item {
     margin-bottom: 0;
 

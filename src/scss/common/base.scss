@@ -22,9 +22,6 @@ body {
 }
 
 .wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   min-height: 100vh;
   background-color: #272727;
   background-image: linear-gradient(
@@ -70,6 +67,11 @@ ul {
 }
 
 @media screen and (min-width: $desktop) {
+  .wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   .container {
     width: 1120px;
   }

@@ -10,13 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
       initHoverHandlers();
     });
 
-    product.addEventListener('click', clickProductHandler);
-    product.addEventListener('touchstart', evt => {
-      evt.preventDefault();
-      clickProductHandler();
-    });
-
-    const clickProductHandler = evt => {
+    product.addEventListener('click', evt => {
       if (product.classList.contains('product--disabled')) return false;
 
       if (product.classList.contains('product--selected')) {
@@ -30,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       product.classList.toggle('product--selected');
-    };
+    });
 
     const initHoverHandlers = () => {
       product.addEventListener('mouseenter', productHoverHandler);

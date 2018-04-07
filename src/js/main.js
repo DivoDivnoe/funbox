@@ -26,10 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
       product.classList.toggle('product--selected');
     });
 
-    product.addEventListener('touchstart', () => {
-      product.setFocusableInTouchMode(false);
-    });
-
     const initHoverHandlers = () => {
       product.addEventListener('mouseenter', productHoverHandler);
       product.addEventListener('mouseleave', productEndHoverHandler);

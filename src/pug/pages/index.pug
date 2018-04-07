@@ -1,0 +1,96 @@
+extends ../_template
+
+block variables
+  -
+    var title = 'Магазин кошачьего корма';
+
+    var catalog= [
+      {
+        promo: 'Сказочное заморское яство',
+        title: 'Нямушка',
+        ingredient: 'с фуа-гра',
+        description: 'Печень утки разварная с артишоками.',
+        mice: 1,
+        portions: 10,
+        weight: 0.5,
+        special: false
+      },
+      {
+        promo: 'Сказочное заморское яство',
+        title: 'Нямушка',
+        ingredient: 'с рыбой',
+        description: 'Головы щучьи с чесноком да свежайшая сёмгушка.',
+        mice: 2,
+        portions: 40,
+        weight: 2,
+        special: false
+      },
+      {
+        promo: 'Сказочное заморское яство',
+        title: 'Нямушка',
+        ingredient: 'с курой',
+        description: 'Филе из цыплят с трюфелями в бульоне.',
+        mice: 5,
+        portions: 100,
+        weight: 5,
+        special: true
+      }
+    ];
+
+    var getEnding = (num) => {
+      var endings = ['ь', 'и', 'ей'];
+      var last = num % 10;
+      var result;
+
+      if ([5, 6, 7, 8, 9, 0].indexOf(last) > -1 || (num >= 10 && num <= 19)) {
+        result = endings[2];
+      } else if ([2, 3, 4].indexOf(last) > -1) {
+        result = endings[1];
+      } else {
+        result = endings[0];
+      }
+
+      return result;
+    };
+
+block content
+  section.catalog
+    h1.visually-hidden Каталог
+    header.catalog__heading  
+      .container Ты сегодня покормил кота?
+    .catalog__content
+      .container.catalog__content-wrapper
+        ul.catalog__list
+          each item in catalog
+            li.catalog__item
+              article.catalog__item-content.product
+                .product__promo 
+                  span.product__promo-text #{item.promo}
+                  span.product__promo-cancel Котэ не одобряет?
+                .product__about-wrapper
+                  .product__heading
+                    h2.product__title #{item.title}
+                    span.product__ingredient #{item.ingredient}
+                  .product__about
+                    span.product__about-portions #{item.portions}
+                    |  порций
+                    br
+                    span.product__about-mice #{item.mice > 1 ? item.mice : ''}
+                    |  мыш#{getEnding(item.mice)} в подарок
+                    if item.special
+                      br
+                      |Заказчик доволен
+                .product__weight
+                  .product__weight-content
+                    span.product__weight-num #{item.weight.toString().replace('.', ',')} 
+                    |  кг
+              .catalog__item-bottom
+                .catalog__buy
+                  small.catalog__buy-text Чего сидишь? Порадуй котэ,
+                    span.catalog__btn-wrapper
+                      button.catalog__btn купи
+                      |.
+                .catalog__description
+                  small.catalog__description-text #{item.description}
+                .catalog__disabled
+                  small.catalog__disabled-text Печалька, #{item.ingredient} закончился
